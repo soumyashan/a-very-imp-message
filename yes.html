@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Choose an Option</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body {
+            height: 100vh;
+            overflow: hidden;
+            background: url("https://images.unsplash.com/photo-1494500764479-0c8f2919a3d8?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D") no-repeat center center;
+            background-size: cover;
+            animation: bgMove 30s linear infinite;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        @keyframes bgMove {
+            0% {
+                background-position: center top;
+            }
+
+            100% {
+                background-position: center bottom;
+            }
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(6px);
+            padding: 40px 50px;
+            border-radius: 16px;
+            text-align: center;
+        }
+
+        .container h1 {
+            color: #ffffff;
+            margin-bottom: 30px;
+            font-size: 32px;
+        }
+
+        .options {
+            display: flex;
+            gap: 40px;
+            justify-content: center;
+        }
+
+        .option {
+            width: 120px;
+            padding: 15px 0;
+            text-decoration: none;
+            font-size: 20px;
+            font-weight: bold;
+            color: #ffffff;
+            background-color: #1e90ff;
+            border-radius: 10px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
+            transition: all 0.3s ease;
+        }
+
+        .option:hover {
+            background-color: #0b5ed7;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
+            transform: translateY(-4px);
+        }
+
+        .snowflake {
+            position: fixed;
+            top: -10px;
+            color: #ffffff;
+            font-size: 14px;
+            user-select: none;
+            pointer-events: none;
+            animation-name: snowFall, snowDrift;
+            animation-timing-function: linear;
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes snowFall {
+            0% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateY(110vh);
+                opacity: 0.3;
+            }
+        }
+
+        @keyframes snowDrift {
+            0% {
+                margin-left: 0;
+            }
+
+            50% {
+                margin-left: 40px;
+            }
+
+            100% {
+                margin-left: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>Why u miss that,what actually make u feel that you need me?</h1>
+        <div class="options">
+            <a href="yes1.html" class="option">YES i need you......</a>
+            <a href="no1.html" class="option">NO,dont have that feelings now</a>
+        </div>
+    </div>
+    <div class="snowflake" style="left:2%; animation-duration:9s,4s;">❄</div>
+    <div class="snowflake" style="left:6%; animation-duration:11s,5s;">❅</div>
+    <div class="snowflake" style="left:10%; animation-duration:13s,6s;">❆</div>
+    <div class="snowflake" style="left:14%; animation-duration:10s,4s;">❄</div>
+    <div class="snowflake" style="left:18%; animation-duration:12s,6s;">❅</div>
+    <div class="snowflake" style="left:22%; animation-duration:9s,5s;">❆</div>
+    <div class="snowflake" style="left:26%; animation-duration:11s,7s;">❄</div>
+    <div class="snowflake" style="left:30%; animation-duration:14s,6s;">❅</div>
+    <div class="snowflake" style="left:34%; animation-duration:10s,5s;">❆</div>
+    <div class="snowflake" style="left:38%; animation-duration:12s,7s;">❄</div>
+    <div class="snowflake" style="left:42%; animation-duration:9s,4s;">❅</div>
+    <div class="snowflake" style="left:46%; animation-duration:13s,6s;">❆</div>
+    <div class="snowflake" style="left:50%; animation-duration:11s,5s;">❄</div>
+    <div class="snowflake" style="left:54%; animation-duration:14s,8s;">❅</div>
+    <div class="snowflake" style="left:58%; animation-duration:10s,6s;">❆</div>
+    <div class="snowflake" style="left:62%; animation-duration:12s,7s;">❄</div>
+    <div class="snowflake" style="left:66%; animation-duration:9s,5s;">❅</div>
+    <div class="snowflake" style="left:70%; animation-duration:13s,6s;">❆</div>
+    <div class="snowflake" style="left:74%; animation-duration:11s,5s;">❄</div>
+    <div class="snowflake" style="left:78%; animation-duration:14s,7s;">❅</div>
+    <div class="snowflake" style="left:82%; animation-duration:10s,4s;">❆</div>
+    <div class="snowflake" style="left:86%; animation-duration:12s,6s;">❄</div>
+    <div class="snowflake" style="left:90%; animation-duration:9s,5s;">❅</div>
+    <div class="snowflake" style="left:94%; animation-duration:13s,6s;">❆</div>
+    <div class="snowflake" style="left:98%; animation-duration:11s,5s;">❄</div>
+
+</body>
+
+</html>

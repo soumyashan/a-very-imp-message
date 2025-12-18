@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Messages</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background: #111;
+  color: white;
+  padding: 20px;
+}
+li {
+  background: #1e1e1e;
+  margin-bottom: 10px;
+  padding: 12px;
+  border-radius: 8px;
+}
+</style>
+</head>
+
+<body>
+<script>
+let pass = "";
+while (!pass) {
+  pass = prompt("Enter password:");
+}
+if (pass !== "1234") {
+  alert("Access denied");
+  throw new Error("Unauthorized");
+}
+</script>
+
+<h2>Messages Received</h2>
+<ul id="list"></ul>
+
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import { getFirestore, collection, getDocs, query, orderBy }
+  from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyAgz2z_d-4VdtMGXhsuPHhTDKQU_W-hjkA",
+  authDomain: "a-very-important-msg.firebaseapp.com",
+  projectId: "a-very-important-msg"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+const q = query(collection(db, "messages"), orderBy("createdAt", "desc"));
+const snap = await getDocs(q);
+
+snap.forEach(doc => {
+  const li = document.createElement("li");
+  li.textContent = doc.data().message;
+  document.getElementById("list").appendChild(li);
+});
+</script>
+
+</body>
+</html>

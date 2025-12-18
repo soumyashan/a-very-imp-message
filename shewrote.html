@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>One Small Message</title>
+
+<style>
+body {
+    height: 100vh;
+    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.box {
+    background: rgba(255,255,255,0.15);
+    padding: 30px;
+    border-radius: 14px;
+    text-align: center;
+    width: 90%;
+    max-width: 420px;
+    backdrop-filter: blur(8px);
+}
+textarea {
+    width: 100%;
+    height: 120px;
+    border-radius: 10px;
+    border: none;
+    padding: 12px;
+    font-size: 15px;
+    resize: none;
+}
+button {
+    margin-top: 15px;
+    padding: 12px 25px;
+    font-size: 16px;
+    border: none;
+    border-radius: 10px;
+    background: #1e90ff;
+    color: white;
+    cursor: pointer;
+}
+button:hover {
+    background: #0b5ed7;
+}
+h2 {
+    color: white;
+    margin-bottom: 15px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="box">
+    <h2>Write the reason (if any) or anything for me.........</h2>
+    <textarea id="msg" placeholder="Anything you want to say..."></textarea>
+    <button onclick="saveAndGo()">Continue</button>
+</div>
+
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import { getFirestore, addDoc, collection, serverTimestamp }
+  from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyAgz2z_d-4VdtMGXhsuPHhTDKQU_W-hjkA",
+  authDomain: "a-very-important-msg.firebaseapp.com",
+  projectId: "a-very-important-msg",
+  storageBucket: "a-very-important-msg.firebasestorage.app",
+  messagingSenderId: "1058710957382",
+  appId: "1:1058710957382:web:8197589a92bf7a91c5c947"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+window.saveAndGo = async function () {
+
+  // 🔒 Prevent multiple submissions from same browser
+  if (localStorage.getItem("submitted") === "true") {
+    alert("You already submitted once");
+    return;
+  }
+
+  const text = document.getElementById("msg").value.trim();
+
+  if (!text) {
+    alert("Please write something before continuing");
+    return;
+  }
+
+  await addDoc(collection(db, "messages"), {
+    message: text,
+    accepted: true,
+    createdAt: serverTimestamp()
+  });
+
+  // ✅ Mark as submitted AFTER successful save
+  localStorage.setItem("submitted", "true");
+
+  window.location.href = "thankyou.html";
+};
+
+</script>
+
+</body>
+</html>
